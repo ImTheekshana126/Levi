@@ -8,8 +8,8 @@ from pathlib import Path
 from telethon import events
 
 from pymongo import MongoClient
-from YoneRobot import MONGO_DB_URI
-from YoneRobot import telethn
+from  Levi import MONGO_DB_URI
+from  Levi import telethn
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
@@ -184,30 +184,30 @@ def load_module(shortname):
         import importlib
         import YoneRobot.events
 
-        path = Path(f"YoneRobot/modules/{shortname}.py")
-        name = "YoneRobot.modules.{}".format(shortname)
+        path = Path(f" Levi/modules/{shortname}.py")
+        name = " Levi.modules.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         print("Successfully imported " + shortname)
     else:
         import importlib
-        import YoneRobot.events
+        import  Levi.events
 
-        path = Path(f"YoneRobot/modules/{shortname}.py")
-        name = "YoneRobot.modules.{}".format(shortname)
+        path = Path(f" Levi/modules/{shortname}.py")
+        name = " Levi.modules.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.register = register
-        mod.YoneRobot = YoneRobot
+        mod. Levi =  Levi
         mod.tbot = telethn
         mod.logger = logging.getLogger(shortname)
         spec.loader.exec_module(mod)
-        sys.modules["YoneRobot.modules." + shortname] = mod
+        sys.modules[" Levi.modules." + shortname] = mod
         print("Successfully imported " + shortname)
 
 
-path = "YoneRobot/modules/*.py"
+path = " Levi/modules/*.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as f:
